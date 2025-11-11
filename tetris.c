@@ -3,6 +3,7 @@
 #include <time.h>
 
 #define MAX_FILA 5  // Tamanho fixo da fila de peças
+//Início do jogo 
 
 // Estrutura que representa uma peça do Tetris Stack
 typedef struct {
@@ -39,7 +40,7 @@ Peca gerarPeca(int id) {
 // Função para inserir uma peça no final da fila (enqueue)
 void inserirPeca(Fila *fila, Peca peca) {
     if (fila->tamanho == MAX_FILA) {
-        printf("⚠️ Fila cheia! Não é possível inserir nova peça.\n");
+        printf("Fila cheia! Não é possível inserir nova peça.\n");
         return;
     }
     fila->tras = (fila->tras + 1) % MAX_FILA; // Movimento circular
@@ -50,11 +51,11 @@ void inserirPeca(Fila *fila, Peca peca) {
 // Função para remover a peça da frente da fila (dequeue)
 void jogarPeca(Fila *fila) {
     if (fila->tamanho == 0) {
-        printf("⚠️ Fila vazia! Não há peça para jogar.\n");
+        printf("Fila vazia! Não há peça para jogar.\n");
         return;
     }
     Peca removida = fila->elementos[fila->frente];
-    printf("🎮 Jogando peça: [%c %d]\n", removida.nome, removida.id);
+    printf("Jogando peça: [%c %d]\n", removida.nome, removida.id);
     fila->frente = (fila->frente + 1) % MAX_FILA; // Movimento circular
     fila->tamanho--;
 }
